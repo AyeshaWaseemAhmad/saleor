@@ -6,7 +6,7 @@ from django.utils import timezone
 from freezegun import freeze_time
 
 from .....account.models import Address, CustomerType, User
-from .....account.tests.fixtures.user import dangerously_create_test_user
+from .....account.tests.utils import dangerously_create_test_user
 from .....order import OrderOrigin
 from ....tests.utils import get_graphql_content
 

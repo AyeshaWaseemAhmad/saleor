@@ -3,7 +3,7 @@ import datetime
 import graphene
 import pytest
 
-from .....account.tests.fixtures.user import dangerously_create_test_user
+from .....account.tests.utils import dangerously_create_test_user
 from .....app.models import App
 from .....core import JobStatus
 from .....csv.models import ExportFile

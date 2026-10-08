@@ -5,7 +5,7 @@ from django.core.management import call_command
 from django.core.management.base import BaseCommand
 from django.db import connection
 
-from ....account.tests.fixtures.user import dangerously_get_or_create_superuser
+from ....account.tests.utils import dangerously_get_or_create_superuser
 from ...utils.random_data import (
     add_address_to_admin,
     create_catalogue_promotions,

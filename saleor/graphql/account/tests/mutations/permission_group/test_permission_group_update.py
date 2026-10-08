@@ -7,7 +7,7 @@ from freezegun import freeze_time
 
 from ......account.error_codes import PermissionGroupErrorCode
 from ......account.models import Group
-from ......account.tests.fixtures.user import dangerously_create_test_user
+from ......account.tests.utils import dangerously_create_test_user
 from ......channel.models import Channel
 from ......core.utils.json_serializer import CustomJsonEncoder
 from ......permission.enums import AccountPermissions, AppPermission, OrderPermissions

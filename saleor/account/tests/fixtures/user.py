@@ -1,63 +1,7 @@
-from typing import Any
-
 import pytest
 
-from ....account.models import Group, User, UserManager
-from ....permission.enums import get_permissions
-from .customer_type import get_or_create_default_customer_type
-
-
-def dangerously_get_or_create_superuser(
-    email: str, password: str | None = None, **extra_fields: Any
-) -> tuple[User, bool]:
-    """Create a superuser for unittests with the given email and password.
-
-    This should never be called for production use (due to lack of
-    validation).
-    """
-    if user := User.objects.filter(email=email).first():
-        return user, False
-    user = dangerously_create_test_user(
-        email=email, password=password, is_staff=True, is_superuser=True, **extra_fields
-    )
-    group, group_created = Group.objects.get_or_create(name="Full Access")
-    if group_created:
-        group.permissions.add(*get_permissions())
-    group.user_set.add(user)
-    return user, True
-
-
-def dangerously_create_test_user(
-    email, password=None, is_staff=False, is_active=True, **extra_fields
-):
-    """Create a user for unittests with the given email and password.
-
-    This should never be called for production use (due to lack of
-    validation).
-    """
-    email = UserManager.normalize_email(email)
-    # Google OAuth2 backend send unnecessary username field
-    extra_fields.pop("username", None)
-
-    if "customer_type" not in extra_fields and "customer_type_id" not in extra_fields:
-        extra_fields["customer_type"] = get_or_create_default_customer_type()
-
-    user = User(email=email, is_active=is_active, is_staff=is_staff, **extra_fields)
-    if password:
-        # Semgrep rule that verifies whether the user's password is validated before
-        # calling `user.set_password()` is being silenced due to this function being
-        # voluntarily insecure and being dedicated for unit-testing only.
-        # We might change that in the future by requiring tests to always provide
-        # a strong password.
-        # For now, it's wrapped around a function name "dangerously_[...]" and being
-        # put inside a 'tests' namespace (saleor.account.tests.fixtures.user)
-        # in order to minimize as much as possible the risk of someone using that
-        # insecure function.
-        user.set_password(  # nosemgrep: python.django.security.audit.unvalidated-password.unvalidated-password
-            password
-        )
-    user.save()
-    return user
+from ....account.models import User
+from ..utils import dangerously_create_test_user
 
 
 @pytest.fixture

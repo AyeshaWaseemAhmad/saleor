@@ -12,7 +12,7 @@ from django.test import RequestFactory, override_settings
 from django.utils.crypto import get_random_string
 
 from ...account.models import Address, User
-from ...account.tests.fixtures.user import dangerously_get_or_create_superuser
+from ...account.tests.utils import dangerously_get_or_create_superuser
 from ...attribute.models import AttributeValue
 from ...channel.models import Channel
 from ...discount.models import (

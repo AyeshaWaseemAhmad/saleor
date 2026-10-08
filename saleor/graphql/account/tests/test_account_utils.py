@@ -1,5 +1,5 @@
 from ....account.models import Group, User
-from ....account.tests.fixtures.user import dangerously_create_test_user
+from ....account.tests.utils import dangerously_create_test_user
 from ....app.models import App
 from ....channel.models import Channel
 from ....permission.enums import (

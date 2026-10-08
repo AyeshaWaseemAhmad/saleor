@@ -5,7 +5,7 @@ from freezegun import freeze_time
 
 from ......account import events as account_events
 from ......account.error_codes import AccountErrorCode
-from ......account.tests.fixtures.user import dangerously_create_test_user
+from ......account.tests.utils import dangerously_create_test_user
 from ......core.tokens import (
     account_confirm_token_generator,
     legacy_password_reset_token_generator,

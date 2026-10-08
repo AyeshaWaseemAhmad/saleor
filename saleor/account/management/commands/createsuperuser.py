@@ -15,7 +15,7 @@ from django.db import DEFAULT_DB_ALIAS
 from django.utils.text import capfirst
 
 from ...models import User
-from ...tests.fixtures.user import dangerously_get_or_create_superuser
+from ...tests.utils import dangerously_get_or_create_superuser
 
 
 class NotRunningInTTYException(Exception):

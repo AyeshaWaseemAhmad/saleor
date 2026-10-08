@@ -6,7 +6,7 @@ from django.test import override_settings
 from django.utils import timezone
 from freezegun import freeze_time
 
-from .....account.tests.fixtures.user import dangerously_create_test_user
+from .....account.tests.utils import dangerously_create_test_user
 from .....checkout.actions import call_checkout_event
 from .....checkout.error_codes import CheckoutErrorCode
 from .....core.models import EventDelivery

@@ -30,7 +30,7 @@ from ...account.models import Address, Group, User
 from ...account.search import (
     update_user_search_vector,
 )
-from ...account.tests.fixtures.user import dangerously_create_test_user
+from ...account.tests.utils import dangerously_create_test_user
 from ...account.utils import get_default_customer_type, store_user_address
 from ...app.models import App
 from ...attribute.models import (

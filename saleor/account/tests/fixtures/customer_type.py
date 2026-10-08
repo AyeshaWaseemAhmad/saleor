@@ -1,6 +1,7 @@
 import pytest
 
 from ...models import CustomerType
+from ..utils import get_or_create_default_customer_type
 
 __all__ = [
     "customer_type",
@@ -8,17 +9,6 @@ __all__ = [
     "default_customer_type",
     "get_or_create_default_customer_type",
 ]
-
-
-def get_or_create_default_customer_type() -> CustomerType:
-    # Transactional tests (django_db(transaction=True)) flush all tables on
-    # teardown, wiping the default customer type created by the data migration,
-    # so recreate it on demand instead of assuming the migration row exists.
-    customer_type, _ = CustomerType.objects.get_or_create(
-        is_default=True,
-        defaults={"name": "Default", "slug": "default"},
-    )
-    return customer_type
 
 
 @pytest.fixture

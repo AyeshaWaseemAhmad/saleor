@@ -12,7 +12,7 @@ from django.urls import reverse
 from django.utils.functional import SimpleLazyObject
 
 from ...account.models import User
-from ...account.tests.fixtures.user import dangerously_create_test_user
+from ...account.tests.utils import dangerously_create_test_user
 from ...core.jwt import create_access_token
 from ...plugins.manager import get_plugins_manager
 from ..utils import handled_errors_logger, unhandled_errors_logger

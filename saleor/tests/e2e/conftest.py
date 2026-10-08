@@ -5,7 +5,7 @@ from django.core.serializers.json import DjangoJSONEncoder
 from django.test import TestCase
 from django.test.client import MULTIPART_CONTENT, Client
 
-from ...account.tests.fixtures.user import dangerously_create_test_user
+from ...account.tests.utils import dangerously_create_test_user
 from ...app.models import App
 from ...graphql.tests.fixtures import BaseApiClient
 

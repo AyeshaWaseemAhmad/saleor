@@ -15,7 +15,7 @@ from ..utils import (
     send_user_event,
     store_user_address,
 )
-from .fixtures.user import dangerously_create_test_user
+from .utils import dangerously_create_test_user
 
 
 @override_settings(MAX_USER_ADDRESSES=2)
